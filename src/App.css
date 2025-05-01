@@ -1,287 +1,272 @@
-/* General Styles */
+/* src/App.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --color-primary: #0f172a;
+  --color-accent: #3b82f6;
+  --color-light: #f8fafc;
+  --color-white: #ffffff;
+  --color-gray: #64748b;
+  --radius: 1rem;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease-in-out;
+}
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
 }
 
-body {
-  background-image: url('/manila.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #333;
-  line-height: 1.6;
-  font-size: 16px;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  position: relative;
-}
-
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+body, html, #root {
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: -1;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-light);
+  color: var(--color-primary);
+  line-height: 1.6;
 }
 
-/* Header Styles */
-.header {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-light);
 }
 
-.header-img {
-  width: 100%;
-  height: auto;
-  max-height: 300px;
-  display: block;
-  object-fit: cover;
-  border-radius: 20px;
+.App-header {
+  background: linear-gradient(to right, #3b82f6, #6366f1);
+  color: var(--color-white);
+  text-align: center;
+  padding: 3rem 1rem;
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
 }
 
 .header-title {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: clamp(1.5rem, 5vw, 3rem); /* Responsive font size */
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  width: 90%;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
-/* Card Container Styling */
-.cards-container {
+main {
+  flex: 1;
+  padding: 3rem 1rem;
+  width: 100%;
+  background-color: var(--color-light);
+}
+
+.card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  justify-items: center;
-  width: 100%;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 2rem 0;
+  align-items: stretch;
 }
 
-/* Card Styling */
 .card {
-  background-color: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  width: 100%;
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: var(--transition);
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   position: relative;
+  overflow: hidden;
+  height: 100%;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* Image Styling */
-.card-img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+.card h3 {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Card Title Styling */
-.card-title {
-  padding: 15px;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #333;
-  background-color: #fafafa;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.card-title:hover {
-  background-color: #f1f1f1;
-}
-
-/* Additional Text Styling */
-.card-description {
-  padding: 10px;
+.card p {
+  color: var(--color-primary);
   font-size: 1rem;
-  color: #666;
-  background-color: #fff;
-  flex-grow: 1;
-  text-align: justify;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  margin: 0.5rem 0;
+  flex-grow: 1
 }
 
-/* Modal Styling */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
+.card-preview {
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  height: 200px;
+  background: #e2e8f0;
+}
+
+.card-image-preview {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
 }
 
 .modal {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 900px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-
-.modal-img {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  padding: 1.5rem;
   width: 100%;
+  max-width: 1200px;  /* Reduced the max-width to make the modal slightly smaller */
+  max-height: 100vh;  /* Added a max height so the modal can be scrolled */
   height: auto;
-  max-height: 400px;
-  object-fit: contain;
-  margin-bottom: 20px;
-  border-radius: 8px;
-}
-
-.modal-title {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.modal-description {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-.modal-date {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #666;
-}
-
-.modal-buttons {
   display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  overflow-y: auto;  /* Enables scrolling if content overflows */
+  position: relative;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.modal-button {
-  padding: 10px 15px;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  flex: 1;
-  min-width: 120px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-.modal-button:hover {
-  background-color: #0056b3;
-}
-
-.modal-close-button {
+.close-modal {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: transparent;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-accent);
+  color: var(--color-white);
   border: none;
-  font-size: 1.5rem;
-  color: #333;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
+  font-weight: bold;
+  z-index: 10;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.modal-close-button:hover {
-  color: #007bff;
+.close-modal:hover {
+  background-color: #2563eb;
 }
 
-/* Responsive Styling */
-@media (max-width: 768px) {
-  body {
-    padding: 10px;
-  }
+.modal-images {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #f1f5f9;
+  border-radius: 0.5rem;
+  touch-action: pan-y;
+}
 
-  .header-title {
-    top: 50%;
-  }
+.modal-image {
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
 
-  .cards-container {
-    grid-template-columns: 1fr;
-    padding: 10px;
-  }
+.modal-content h3 {
+  color: var(--color-accent);
+  font-size: 1.75rem;
+  margin-top: 1rem;
+}
 
-  .card {
-    max-width: 100%;
-  }
+.modal-content p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
 
+.prev-button,
+.next-button {
+  padding: 0.5rem 1rem;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: #2563eb;
+}
+
+.App-footer {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
   .modal {
-    padding: 15px;
+    max-width: 95vw;
+    padding: 1rem;
   }
-
-  .modal-buttons {
-    flex-direction: column;
+  .modal-images {
+    height: 250px;
   }
-
-  .modal-button {
-    width: 100%;
+  .modal-content h3 {
+    font-size: 1.25rem;
   }
 }
 
-@media (max-width: 480px) {
-  .header-img {
-    border-radius: 10px;
-  }
-
+@media screen and (max-width: 480px) {
   .header-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
-
-  .card-title {
-    font-size: 1.1rem;
-    padding: 10px;
-  }
-
-  .card-description {
+  .card h3 {
     font-size: 0.9rem;
-    padding: 8px;
   }
-
-  .modal-title {
-    font-size: 1.3rem;
-  }
-
-  .modal-description {
-    font-size: 0.9rem;
+  .modal-content h3 {
+    font-size: 1.2rem;
   }
 }
